@@ -1,0 +1,146 @@
+<!--TEMPLATE COLLEZIONE-->
+    <style>
+.colonnine {                                     /* computer */
+            display: none;
+
+}
+
+@media (min-width: 400px) {
+
+.colonnine {                                     /* computer */
+            display: flex;
+            display: block;
+            background: none;
+            border: 0px solid white;
+            position: absolute;
+            left:8.0%;       top:70px;
+            width: 91.5%;   height: 85.0%;
+            padding-left: 0%;
+            overflow: none;
+            font-size: 11px;
+            margin-bottom: 2px;  margin-top: 0.5px
+            /* Chrom  Safari  */          /* FireFox  */
+        -webkit-column-width: 25.0%; -moz-column-width: 25.0%; column-width: 25.0%;
+        -webkit-column-count: 4;     -moz-column-count: 4;     column-count: 4;
+        -webkit-column-gap: 0%;      -moz-column-gap: 0%;      column-gap: 0%;
+    }
+
+ }
+
+
+    </style>
+<!--  ======================================================= -->
+
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Статті</title>{% endblock %}
+{% load static %}
+
+<!--  ======================================================= -->
+{% block content %}
+
+   <div class = "image-fon-content">
+         <img class = "" src="{% static 'img_background/Chiesa_Gievka_blue_21.jpg' %}" alt="Logo_Kursor_blu"
+              style="width:100%;"/>
+   </div>
+
+<div class = "image-kss">
+         <img class = "" src="{% static 'img_background/KSS_light_blue.jpg' %}" alt="KSS_Kursor_blu"
+              style="width:98%;"/>
+</div>
+
+<div class = "tytle-kss">
+            <p> {{ genre_text }} </p>
+</div> <!-- title_kss -->
+
+{% if genre == "0" %}
+    <div class="colonnine">
+           {% for thema in themalist %}
+                <a class = "link" style="font-size: 11px; margin-bottom: 0px;  margin-top: 0px"
+                       href="{% url 'nome_list' 0 thema.id %}"><b>{{ thema.genre }} </b></a></p>
+           {% endfor %}
+    </div>   <!-- colonnine -->
+
+{% else %} <!-- genre != 0 -->
+
+<div class="elenco-list">
+   <div class = "th-block">
+    <table style="width:100%">
+      <tr style="height:20px">
+        <th style="width:55%"> Назва статті </th>
+        <th style="width:25%"> Автори </th>
+        <th style="width:11%;"> Збірка </th>
+        <th style="width:7%; text-align: right;"> Стор. </th>
+        <th style="width:2%; text-align: right;"></th>
+      </tr>
+    </table>
+   </div>  <!-- th-block -->
+
+      <br> <br>
+      {% for art in articlelist %}
+    <table style="width:100%">
+      <tr style="">
+        {% if art.content == "1" %}
+                <td style="width:55%; font-size: 12px; padding-right: 7px">
+                   <a class = "link" href="{% url 'book-book' art.book_id art.pagina 1 %}">
+                        <b> {{ art.title }} </b> </a> </td>
+        {% else %}
+                <td style="width:55%; font-size: 12px; padding-right: 7px"> {{ art.title }}   </td>
+        {% endif %}
+
+        {% if art.num_aut == 1 %}
+                <td style="width:25%;">
+                    <a class = "link" href="{% url 'author_detail' art.author_id %}">
+                        <b> {{ art.authore }} </b> </a> </td>
+        {% else %}
+                <td style="width:25%;"> {{ art.authore }}   </td>
+        {% endif %}
+
+        <td style="width:11%;"> {{ art.pseudo }} </td>
+        <td style="width:7%; text-align: right;"> {{ art.pagina }} </td>
+        <td style="width:2%; text-align: right;"></td>
+      </tr>
+    </table>
+     {% endfor %}
+</div>   <!-- elenco-list -->
+
+{% endif %} <!-- genre != 0 -->
+
+
+
+{% endblock %} <!-- content -->
+
+<!-- ====================  SIDE-RICHT  ================================= -->
+<div class="side-right">
+{% block side_right %}
+
+<div class = "image-fon-right">
+         <img class = "" src="{% static 'img_background/Chiesa_Gievka_blue_3.jpg' %}" alt="Logo_Kursor_blu"
+              style="width:100%;"/>
+</div> <!-- image-fon-right -->
+
+<div class = "right-list" style = "top: 10.0%; height: 89%">
+    <p style = "color: black; font-size: 10">
+      Українські великі літери <b>"&nbsp;Є&nbsp;"</b>, <b>"&nbsp;І&nbsp;"</b> та <b>"&nbsp;Ї&nbsp;"</b>шукайте на початку кириличного алфавітного порядку,
+      а малі літери <b>"&nbsp;є&nbsp;"</b>, <b>"&nbsp;і&nbsp;"</b> та <b>"&nbsp;ї&nbsp;"</b> - у кінці кириличного алфавитного порядку</p>
+      <br>
+
+    {% for lett in letteralist %}
+            <figure style="margin-bottom: 0px;  margin-top: 0px">
+                <p style="display: inline-block; text-align: left;  margin-bottom: 0px;  margin-top: 0px">
+                <a class = "link" style="font-size: 17px;  margin-bottom: 0px;  margin-top: 0px"
+                   href="{% url 'nome_list' lett.0 0 %}"><b>{{ lett.0 }} :</b></a>
+                    <p style="display: inline-block; font-size: 12;"> &nbsp;&nbsp;{{lett.1}} </p>  </p>
+            </figure>
+    {% endfor %}
+</div> <!-- right-list -->
+
+<div class = "right-nome-top">
+  <p style="">{{ right_text }}: {{numer}}</p>
+</div>
+
+
+
+{% endblock %} <!-- site_right -->
+</div>  <!-- side-right -->
+

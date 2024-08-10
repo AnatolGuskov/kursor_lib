@@ -1,0 +1,127 @@
+<!--TEMPLATE COLLEZIONE-->
+    <style>
+
+    </style>
+<!--  ======================================================= -->
+
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Збірки</title>{% endblock %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/kss_styles_left.css' %}" />
+<link rel="stylesheet" href="{% static 'css/kss_styles_content.css' %}" />
+<link rel="stylesheet" href="{% static 'css/kss_styles_elenco.css' %}" />
+
+<!--  ======================================================= -->
+{% block content %}
+
+<div class = "image-fon-content">
+         <img class = "" src="{% static 'img_background/Chiesa_Gievka_blue_21.jpg' %}" alt="Logo_Kursor_blu"
+              style="width:100%;"/>
+</div>
+
+<div class = "image-kss">
+         <img class = "scale-border" src="{% static 'img_background/KSS_light_blue.jpg' %}" alt="KSS_Kursor_blu"
+              style="width:98%;"/>
+</div>
+
+<div class = "tytle-kss">
+    {% if type_book == "Збірок" %}
+            <p> Збірки Kультурної спадщини Слобожанщини </p>
+    {% else %}
+            <p> Збірки {{type_book}} </p>
+    {% endif %}
+
+</div>  <!-- tytle-kss -->
+
+<div class = "th-block">
+    <table style="width:100%">
+      <tr style="height:20px">
+        <th style="width:13%"> Дата </th>
+        <th style="width:12%"> Код збірки </th>
+        <th style="width:8%; color: white; "> Обкла </th>
+        <th style="width:45%;"> Назва збірки </th>
+        <th style="width:10%; text-align: right;"> Статей </th>
+        <th style="width:10%; text-align: center; color: white;"> Читати </th>
+      </tr>
+    </table>
+ </div>  <!-- th-block -->
+
+
+<div class="elenco-list">
+
+
+ {% for book in booklist %}
+    <table style="width:100%">
+      <tr style="">
+        <td style="width:13%"> {{ book.data }} </td>
+        <td style="width:12%">
+            <a class = "link" style="" href="{% url 'book_detail' book.pk 1 %}">
+            <b> {{ book.pseudonym }} </b> </a> </td>
+        {% if book.img == "1" %}
+        <td style="width:8%"> <img src="{% static book.path %}" alt="{{ book.path }}"
+                 style="width: 100%; border: 1px solid gray;"/> </td>
+        {% else %}
+        <td style="width:8%"> &nbsp; </td>
+        {% endif %}
+        <td style="width:45%;  padding-right: 7px">
+            <a class = "link" style="" href="{% url 'book_detail' book.pk 1 %}">
+                <b> {{ book.title }} </b>  </a> </td>
+        <td style="width:10%; text-align: right; padding-right: 15px"> {{ book.num_art }} </td>
+        <td style="width:10%; font-size: 0.95vw; text-align: center;">
+            {% if book.content == "1" %}
+            <a href="{% url 'book-book' book.pk 1 1 %}">
+                <b> Читати </b> </a></td>
+            {% endif %}
+
+      </tr>
+    </table>
+ {% endfor %}
+
+</div>   <!-- elenco-list -->
+
+{% endblock %} <!-- content -->
+
+<!-- ====================  SIDE-RICHT  ================================= -->
+<div class="side-right">
+{% block side_right %}
+
+<div class = "image-fon-right">
+         <img class = "" src="{% static 'img_background/Chiesa_Gievka_blue_3.jpg' %}" alt="Logo_Kursor_blu"
+              style="width:100%;"/>
+</div> <!-- image-fon-right -->
+
+<div class = "right-image-top" style="text-align: center;">
+                 <img  src="{% static 'img_background/Tytle_Avatar.jpg' %}" alt=""
+                 style="width:; height: 100%; object-fit: fill; border: 0px solid gray;"/>
+</div> <!-- right-image-top -->
+
+<div class = "right-list">
+
+    <p style = "font-family: Arial; font-size: 1.3vw; color: DimGray">
+        <b> {{ type_book }}: {{num_book}} </b></p>
+
+        {% for typ in typelist %}
+            {% if typ.num_book_type > 0 %}
+                <p style="text-align: left;">
+                <a class = "link" style=""
+                  href="{% url 'book_list' typ.id %}"><b>{{ typ.pseudonym }}:</b> {{typ.num_book_type}} </a></p>
+            {% endif %}
+        {% endfor %}
+
+</div> <!-- right-list -->
+
+<div class = "right-tytle-top">
+  <img class = "" src="{% static 'img_background/KSS_testo.jpg' %}" alt="Культурна спадщина Слобожанщини"
+              style="width:100%; height: 120%"/>
+</div>
+
+<!--<div class = "right-nome-top">-->
+<!--  {{ type_book }}: {{num_book}}-->
+<!--</div>-->
+
+
+{% endblock %} <!-- site_right -->
+
+</div>  <!-- side-right -->
+

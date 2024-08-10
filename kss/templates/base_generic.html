@@ -1,0 +1,110 @@
+<!--TEMPLATE JAGOBASA-->
+
+<!doctype html>
+<html lang="uk">
+
+  <head>
+
+    {% block title %}<title>KSS basa</title>{% endblock %}
+    <meta charset="utf-8" />
+    <!-- Responsibilaty -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Сompiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Сompiled JavaScript -->-
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+     <!-- Добавление шрифта -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ruslan+Display&display=swap" rel="stylesheet">
+
+    <!-- Отключение кэширования -->
+    <meta http-equiv = "Cache-Control" content = "no-store, no-cache, must-revalidate">
+    <meta http-equiv = "Pragma" content = "no-cache">
+    <meta http-equiv = "Expires" content = "0">
+
+    <!-- Добавление дополнительного статического CSS файла -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/kss_styles_left.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/kss_styles_content.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/kss_styles_elenco.css' %}" />
+
+  </head>
+<!--  ====================================================    -->
+ <style>
+
+
+
+ </style>
+<!--  ====================================================    -->
+ <body>
+
+<!--  ====================================================    -->
+<div class = "maxwidth">
+
+<side-left class="side-left">
+{% block sidebar %}
+
+    <div class = "image-logo">
+         <a href="{% url 'index' %}">
+         <img class = "scale-border" src="{% static 'img_background/Logo_Kursor_black.jpg' %}" alt="Logo_Kursor_blu"
+              style="width:98%;"/> </a>
+    </div>
+
+    <div class = "image-fon-left">
+         <img class = "" src="{% static 'img_background/Chiesa_Gievka_blue_1.jpg' %}" alt="Logo_Kursor_blu"
+              style="width:100%;"/>
+    </div>
+
+    <div class="menu">
+            <div class = "menu-button">
+            <a class = "link" href="{% url 'book_list' 0 %}"><strong>Збірки</strong></a></div>
+            <div class = "menu-button">
+            <a class = "link" href="{% url 'article_list' 0 0 0 %}"><strong>Статті</strong></a></div>
+            <div class = "menu-button">
+            <a class = "link" href="{% url 'author_list' 100 0 %}"><strong>Автори</strong></a></div>
+            <p style = "padding-left: 5.0%; font-size: 0.9vw; margin-bottom: 0px;  margin-top: 5px;">
+                     <b>Покажчики:</b> </p>
+            <div class = "menu-button">
+            <a class = "link" href="{% url 'thema_list' 0 0 %}"><strong>Тематичний</strong></a></div>
+            <div class = "menu-button">
+            <a class = "link" href="{% url 'nome_list' 0 0 %}"><strong>Іменний</strong></a></div>
+            <div class = "menu-button">
+            <a class = "link" href="{% url 'citta_list' 0 0 %}"><strong>Географічний</strong></a></div>
+
+    </div>  <!-- menu -->
+
+
+
+
+
+
+
+
+
+ {% endblock %} <!-- sidebar -->
+ </side-left> <!-- side_left -->
+<!--   ==========================================================  -->
+
+        <div class="content">
+          {% block content %}
+
+          {% endblock %}
+        </div>
+
+  <!--   ==========================================================  -->
+
+        <side-right class="side-right">
+          {% block side_right %}
+
+          {% endblock %}
+        </side-right>
+
+ </div>    <!-- maxwidth -->
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!--TEMPLATE PROGETTO LIST -->
+
+ <style>
+
+ .image-book {
+        display: none;
+        background: none;
+        border: 0px solid white;
+        position: absolute;
+        left:1.0%;      top:1.0%;
+        width: 99.0%;   height: 98.0%;
+        padding-left: 0px;
+        overflow-y: auto;
+ }
+.book-data {                           /* computer */
+    display: none;        background: none;
+
+    }
+
+
+@media (min-width: 400px) {
+
+ .image-book {                         /* computer */
+        display: block;
+        background: none;
+        border: 0px solid white;
+        position: absolute;
+        vertical-align: top;
+        left:2.0%;      top:9.0%;
+        width: 97.0%;   height: 92.0%;
+        padding-right: 0%;
+        color: blue; font-size: 1.0vw;
+        overflow-y: auto;
+  }
+
+  .image-book::-webkit-scrollbar {        /* computer */
+        width: 5px;    height: 5px;
+  }
+
+  .image-book::-webkit-scrollbar-thumb {
+        background: linear-gradient(to bottom, blue, rgb(200, 200, 200));
+        border-radius: 5px;
+  }
+
+.book-data {                           /* computer */
+    display: block;        background: none;
+    border: 0px solid red;
+    position: absolute;
+    left: 2%;       top: 3.5%;
+    width: 5.5%;   height: 4.0%;
+    font-family: Arial;
+    font-size: 1.0vw;
+    font-style: normal;
+    color: black;
+}
+
+}
+
+ </style>
+<!--  ======================================================= -->
+
+{% extends "base_generic.html" %}
+{% block title %}<title>Перегляд книги</title>{% endblock %}
+{% load static %}
+
+<!--  ======================================================= -->
+{% block content %}
+
+<div class = "tytle-kss" style = "color: blue;">
+        <a class = "link" style = "font-size: 2.0vw;" href="{% url 'book_detail' book_pk 1 %}">
+            <p> {{book_pseudo}} <nome style = "color: DimGray; font-size: 1.2vw;">&nbsp;&nbsp;{{book_nome}} </nome> </p>  </a>
+</div>  <!-- tytle-kss       -->
+
+<div class = "book-data"> {{ book_data }} </div>
+
+{% if user.is_authenticated %}
+        <div class = "image-book">
+             {% for page in book_list %}
+               <p>{{ page.num_pag }}
+                 <img src="{% static page.path %}" alt="{{ page.1 }}"
+                 style="width:100%; height:; vertical-align: top;"/></p>
+               <br><br>
+             {% endfor %}
+        </div>  <!-- image-book        -->
+{% else %}
+        <div class = "text-elenco">
+                        <p><b> Per visualizzare il catalogo è necessario effettuare </b></p>
+                        <p style = "font-size: 12"><b> <a href="{% url 'login' %}?next={{request.path}}">>>login</a>
+                            o <a href="{% url 'register' %}?next={{request.path}}">>>registrarsi </a></b></p>  </a>
+        </div> <!-- text-elenco -->
+{% endif %}
+
+
+{% endblock %} <!-- content -->
+
+<!-- ===========  SIDE RIGHT ===================================== -->
+
+{% block side_right %}
+
+
+    <div class = "right-image-top" style="text-align: center;">
+            <a href="{% url 'book-book' book_pk 1 1 %}">
+            <img class = "scale-size-small" src="{% static book_img %}" alt=""
+                 style="width:; height: 95%; object-fit: fill; border: 1px solid gray; box-shadow: 3px 3px 10px black;"/></a>
+    </div> <!-- right-image-top -->
+
+<div class = "right-list" style = "text-align: left; ">
+<!--      {% if user.is_authenticated %}-->
+          {% for page in book_content %}
+            <figure>
+               <p style = "margin-bottom: 2px;  margin-top: 0.5px; color: blue"> {{ page.pagina }} </p>
+               <p>  <b style = "font-size: 0.9vw"> {{ page.authors }}:</b>
+                    <a class = "link" style = "" href="{% url 'book-book' book_pk page.pagina 1 %}">
+                        {{ page.title }}  </a> </p>
+            </figure>
+          {% endfor %}
+<!--      {% else %}-->
+<!--          {% for page in book_content %}-->
+<!--               <p>  <b> {{ page.authors }}:</b>-->
+<!--                        {{ page.title }}  </p>-->
+<!--               <p></p>-->
+<!--          {% endfor %}-->
+<!--      {% endif %}-->
+</div>    <!-- right-list -->
+
+<div class = "right-tytle-top">
+        <img class = "" src="{% static 'img_background/KSS_testo.jpg' %}" alt="Культурна спадщина Слобожанщини"
+              style="width:100%; height: 120%"/>
+</div>
+
+
+
+{% endblock %}  <!-- side-right -->
+
+
+</body>
+</html>
+

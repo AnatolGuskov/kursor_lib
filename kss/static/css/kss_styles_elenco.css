@@ -1,0 +1,163 @@
+body {
+    background: black; /* Цвет фона веб-страницы */
+}
+
+.maxwidth {                                /* mobile */
+    position: absolute;
+    background: rgb(100, 100, 100);
+    border: 0px solid rgb(100, 100, 100);
+    left: 0%;    top: 0px;
+    width: 100%; height: 100%;
+    padding-top: 0%;
+    margin: 0%;
+}
+
+<!--   ================= ELENCO mobile ======================  -->
+
+.elenco-list{                             /* mobile */
+        display: flex;    display: block;
+        flex-wrap: wrap;
+        background: none;
+        text-align: left;
+        position: absolute;
+        left:0px;       top:13%;
+        width: 100%;   height: 86%;
+        border: 0px solid red;
+        padding-left: 5px;
+        overflow-y: scroll;
+    }
+.elenco-list::-webkit-scrollbar {        /* mobile */
+        width: 5px;    height: 5px;
+}
+.elenco-list::-webkit-scrollbar-thumb {
+        background: linear-gradient(to bottom, rgb(50, 50, 50), rgb(200, 200, 200));
+        border-radius: 5px;
+}
+table {                                 /* mobile */
+  border-spacing: 30px;
+}
+.th-block {                             /* mobile */
+        text-align: left;
+        position: absolute;
+        left:0px;      top:9%;
+        width: 100%;   height: 3%;
+        padding-left: 5px;
+}
+th, td {                             /* mobile */
+  border-bottom: 1px solid #ddd;
+  font-family: Arial;    font-size: 11px;
+  color: white;
+}
+td {                             /* mobile */
+  border-bottom: 0px solid gray;
+  font-family: Arial;    font-size: 11px;
+  color: white;
+  padding: 10px;
+}
+tr {                             /* mobile */
+  border-bottom: 1px solid gray;
+  font-family: Arial;    font-size: 11px;
+  color: white;
+  padding: 10px;
+}
+
+time_car {                              /* mobile */
+    background: none;
+    position: absolute;
+    left:  102%;      top: 35%;
+    width: 4%;   height: 3%;
+    font-family: Arial;    font-size: 10px;
+    text-align: center;
+    border: 0px solid red;
+
+}
+.text-elenco {                           /* mobile */
+    display: none;        background: none;
+    border: 0px solid red;
+
+}
+
+<!--   =================  End ELENCO Mobile =================  -->
+
+
+<!--   =================== ELENCO COMPUTER ==================  -->
+
+body {  }
+
+@media (min-width: 400px) {
+
+.maxwidth {                                  /* computer */
+    position: absolute;
+    background: gray;
+    border: 0px solid rgb(50, 50, 50);
+    left:0px;    top:0.5%;
+    height: auto;
+    width: 100%; max-width: 1500px;
+    padding-top: 50%;
+    margin: 0;
+}
+.th-block {                             /* computer */
+    border: 0px solid green;
+    text-align: left;
+    position: absolute;
+    left: 31.0%;     top:12%;
+    width: 68%;  height: 5%;
+    padding-left: 0px;
+    color: blue;
+}
+.elenco-list {                             /* computer */
+    display: flex;    display: block;
+    border: 0px solid red;
+    flex-wrap: wrap;
+    background: none;
+    text-align: left;
+    position: relative;
+    left: 31.0%;       top:18%;
+    width: 68%;        height: 81%;
+    border: 0px solid red;
+    padding-left: 0px;
+    overflow-y: scroll;
+    }
+.elenco-list::-webkit-scrollbar {        /* computer */
+        width: 5px;    height: 5px;
+}
+.elenco-list::-webkit-scrollbar-thumb {
+        background: linear-gradient(to bottom, blue, rgb(200, 200, 200));
+        border-radius: 5px;
+}
+
+th {                             /* computer */
+    border-bottom: 2px solid gray;
+    height: 20px;
+    font-family: Arial;  font-size: 1.0vw;
+    color: gray;          /* DodgerBlue */
+}
+td {                             /* computer */
+    border-bottom: 1px solid gray;
+    font-family: Arial;    font-size: 0.95vw;
+    height: 0px;
+    padding-top: 5px; padding-left: 0px;
+    color: black;
+}
+tr {                             /* computer */
+    border-bottom: 0px solid gray;
+    font-family: Arial;    font-size: 11px;
+    color: blue;
+    vertical-align: top;
+    padding-left: -10px;
+}
+.text-elenco {                           /* computer */
+    display: block;        background: none;
+    border: 0px solid red;
+    position: absolute;
+    left: 70%;      top: 25px;
+    width: 28.0%;   height: 20px;
+    font-family: Arial;
+    font-size: 15; font-weight: 200;
+    font-style: normal; text-align: right;
+    transform: scale(1, 1);
+    color: black;
+}
+
+}
+<!--   =================== END of MEDIA COMPUTER ==============  -->

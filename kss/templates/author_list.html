@@ -1,0 +1,119 @@
+<!--TEMPLATE COLLEZIONE-->
+    <style>
+
+    </style>
+<!--  ======================================================= -->
+
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Автори</title>{% endblock %}
+
+{% load static %}
+
+<!--  ======================================================= -->
+{% block content %}
+
+<div class = "image-fon-content">
+         <img class = "" src="{% static 'img_background/Chiesa_Gievka_blue_21.jpg' %}" alt="Logo_Kursor_blu"
+              style="width:100%;"/>
+</div>
+
+<div class = "image-kss">
+         <img class = "scale-border" src="{% static 'img_background/KSS_light_blue.jpg' %}" alt="KSS_Kursor_blu"
+              style="width:98%;"/>
+</div>      <!-- image-kss -->
+
+<div class = "tytle-kss">
+            <p> Автори статей&nbsp;&nbsp;&nbsp;{{tytle_nome}}  </p>
+</div>    <!-- tytle-kss -->
+
+<!--  =================== Elenco ======================== -->
+
+    <div class = "text-elenco">
+                <a class = "" style="font-size: 1.1vw;"
+                   href="{% url 'rating' %}"><i><b> > Рейтинг авторів </b></i></a>
+    </div>  <!-- text-elenco -->
+
+<div class = "th-block">
+    <table style="width:100%;">
+      <tr style="">
+        <th style="width:16%;"> Прізвище </th>
+        <th style="width:22%;"> Ім'я, по-батькові </th>
+        <th style="width:9%; text-align: right;"> Рейтинг</th>
+        <th style="width:9%; text-align: right;"> Статей </th>
+        <th style="width:40%; padding-left: 7px";> Інформація про автора </th>
+      </tr>
+    </table>
+</div>  <!-- th-block -->
+
+<div class="elenco-list">
+
+     {% for auth in authorlist %}
+    <table style="width:100%">
+      <tr style="">
+        <td style="width:16%; font-size: 12">
+            <a class = "link" href="{% url 'author_detail' auth.id %}">
+                <b> {{ auth.cognome }} </b> </a></td>
+        <td style="width:22%"> {{ auth.nomepadre }} </td>
+          {% if auth.num_article > 2 %}
+        <td style="width:9%; text-align: right; padding-right: 2%"><b> {{ auth.rating }} </b></td>
+          {% else %}
+        <td style="width:9%; text-align: right; padding-right: 3%; color: rgba(76, 175, 80, 0)">
+            <b> 190 </b></td>
+          {% endif %}
+        <td style="width:9%;  text-align: right; padding-right: 3%"> <b> {{ auth.num_article }} </b> </td>
+
+        <td style="width:40%;  padding-left: 2%"> {{ auth.resume }}  ({{ auth.status }})</td>
+
+      </tr>
+    </table>
+     {% endfor %}
+
+    <br><br><br>
+    <p style = "color: blue; font-size: 1.0vw;"><i>Натиснить літеру справа, щоби обрати групу авторів >></i></p>
+    <p> <a class = "link" href="{% url 'author_list' 0 0 %}">
+       <b><i> Або оберіть усіх авторів одразу (виборка потребує певного часу!) </i></b></a></p>
+</div>   <!-- elenco-list -->
+
+{% endblock %} <!-- content -->
+
+
+<!-- ====================  SIDE-RICHT  ================================= -->
+<div class="side-right">
+{% block side_right %}
+
+<div class = "image-fon-right">
+         <img class = "" src="{% static 'img_background/Chiesa_Gievka_blue_3.jpg' %}" alt="Logo_Kursor_blu"
+              style="width:100%;"/>
+</div> <!-- image-fon-right -->
+
+<div class = "right-list" style = "top: 12.0%; height: 87.0%">
+
+    <div class = "right-text" style = "">
+            <b> Авторів {{ tytle_nome }}: {{num_author}} </b></div>
+    <br><br>
+<p style = "color: black; font-size: 0.9vw; padding-right: 10px">
+      Українські великі літери <b>"&nbsp;Є&nbsp;"</b>, <b>"&nbsp;І&nbsp;"</b> та <b>"&nbsp;Ї&nbsp;"</b>шукайте на початку кириличного алфавітного порядку,
+      а малі літери <b>"&nbsp;є&nbsp;"</b>, <b>"&nbsp;і&nbsp;"</b> та <b>"&nbsp;ї&nbsp;"</b> - у кінці кириличного алфавитного порядку</p>
+      <br>
+        {% for lett in letteralist %}
+
+                <p style="display: inline-block; text-align: left;  margin-bottom: 0px;  margin-top: 0px">
+                <a class = "link" style="font-size: 1.5vw;  margin-bottom: 0px;  margin-top: 0px"
+                   href="{% url 'author_list' lett.0 0 %}"><b>{{ lett.0 }} :</b></a>
+                    <div style="display: inline-block; font-size: 0.9vw;"> &nbsp;&nbsp;{{lett.1}} </div></p>
+
+        {% endfor %}
+</div> <!-- right-list -->
+
+<div class = "right-tytle-top">
+
+         <img class = "" src="{% static 'img_background/KSS_testo.jpg' %}" alt="Культурна спадщина Слобожанщини"
+              style="width:100%; height: 120%"/>
+
+</div>
+
+
+{% endblock %} <!-- site_right -->
+</div>  <!-- side-right -->
+

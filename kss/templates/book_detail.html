@@ -1,0 +1,200 @@
+<!--TEMPLATE COLLEZIONE-->
+    <style>
+
+.image-book {                           /* mobile */
+        background: none;
+        border: 0px solid red;
+        position: absolute;
+        left:20.0%;       top:8.0%;
+        width: 80.0%;   height: 92.0%;
+        padding-left: 0px;
+        overflow: auto;
+ }
+
+ .image-foto {                           /* mobile */
+        background: none;
+        border: 0px solid red;
+        position: absolute;
+        left:20.0%;       top:8.0%;
+        width: 80.0%;   height: 92.0%;
+        padding-left: 0px;
+        overflow: auto;
+ }
+
+
+
+
+        @media (min-width: 400px) {
+
+.image-book {                           /* computer */
+        display: block;        background: none;
+        position: absolute;
+        border: 1px solid gray;
+        left:8.0%;       top:9%;
+        width: 21%;   height: 40%;
+        padding-left: 0px;
+        text-align: center;
+        overflow: hidden;
+        box-shadow: 3px 3px 10px gray;
+}
+
+.image-foto {                           /* computer */
+        background: none;
+        border: 0px solid white;
+        position: absolute;
+        left:0.3%;       top:59.7%;
+        width: 30.0%;   height: 39.0%;
+        padding-left: 0px;
+        overflow: hidden;
+ }
+
+
+    </style>
+<!--  ======================================================= -->
+
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Збірка</title>{% endblock %}
+
+{% load static %}
+
+<!--  ================ VIEWS BOOK_DETAIL ==================== -->
+<!--  ======================================================= -->
+{% block content %}
+
+<div class = "image-fon-content">
+         <img class = "" src="{% static 'img_background/Chiesa_Gievka_blue_21.jpg' %}" alt="Logo_Kursor_blu"
+              style="width:100%;"/>
+</div>
+
+<div class = "image-kss">
+         <img src="{% static 'img_background/KSS_light_blue.jpg' %}" alt="KSS_Kursor_blu"
+              style="width:98%;"/>
+</div>      <!-- image-kss -->
+
+<div class = "tytle-kss" >
+            <p> Збірка {{ book.pseudonym }} </p>
+</div>    <!-- tytle-kss -->
+
+<div class = "image-book">
+    {% if book_content == "1" %}
+           <a href="{% url 'book-book' book_pk 1 1 %}">
+           {% if book_img != "" %}
+                <img class = "scale-size-small" src="{% static book_img %}" alt="Image Book"
+                        style="width:100%; height:100%;"/> </a>
+           {% else %}
+           {% endif %}
+    {% else %}
+           {% if book_img != "" %}
+                <img class = "" src="{% static book_img %}" alt="Image Book"
+                        style="width:100%; height:100%;"/> </a>
+           {% else %}
+           {% endif %}
+
+    {% endif %}
+</div>    <!-- image-book -->
+
+<div class = "image-foto">
+    {% if book_foto %}
+           <img class = "scale-size-big" src="{% static book_foto %}" alt="Image Book"
+                style="width:100%; border: 3px solid white;"/>
+    {% else %}
+
+    {% endif %}
+</div>    <!-- image-foto -->
+
+<!-- ====================  Elenco  ================================= -->
+
+<div class = "elenco-list" style = "top: 9%; height: 90%" >
+    <table style="width: 100%; color: black">
+      <tr> <td style="width:25%; color: black" > <b>  Назва: </b> </td>
+           <td style="width:55%; color: blue; font-size: 1.2vw"> <b>{{ book.title }} </b></td>
+           <td style="width:20%; color: blue; font-size: 1.0vw">
+               {% if book_content == "1" %}
+               <a href="{% url 'book-book' book_pk 1 1 %}"> <b> Читати </b></a> </td>  </tr>
+               {% endif %}
+      <tr> <td style="width:25%;" > <b> Інформація: </b> </td>
+           <td style="width:55%; color: black"> <b>{{ book.subtitle }}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ book.summary }}</td>
+           <td style="width:20%; font-size: 10; padding-left: 10px">{{ author.status }}</td>  </tr>
+      <tr> <td style="width:25%;" > <b> Дата виходу: </b> </td>
+           <td style="width:55%"> {{ book.data }} </td>
+           <td style="width:20%; font-size: 10; padding-left: 10px">{{ author.status }}</td>  </tr>
+      <tr> <td style="width:25%;" > <b> Доробок: </b> </td>
+           <td style="width:65%">
+               авторів: <b>{{ book.num_aut }}</b>,&nbsp;&nbsp;&nbsp;
+               статей: <b>{{ book.num_art }}</b>,&nbsp;&nbsp;&nbsp;
+               сторінок: <b>{{ book.num_pag }}</b>,&nbsp;&nbsp;&nbsp;
+               ілюстрацій: <b>{{ book.num_img }}</b></td>
+           <td style="width:10%; font-size: 10"> &nbsp; </td>  </tr>
+    </table>
+    <br><br>
+    <p style = "color: black"><b> Зміст збірки: </b></p>
+
+
+    {% for art in book_articles %}
+    <table style="width:100%">
+      <tr style = "height: 5px">
+        {% if art.num_aut == 1 %}
+           <td style="width:25%;">
+                    <a class = "link" href="{% url 'author_detail' art.author_id %}">
+                        <b> {{ art.authore }} </b> </a> </td>
+        {% else %}
+           <td style="width:25%;"> {{ art.authore }} </td>
+        {% endif %}
+
+        <td style="width:65%;">
+                    <a class = "link" href="{% url 'article_detail' art.id %}">
+                        <b> {{ art.title }} </b> </a> </td>
+
+        {% if art.content == "1" %}
+          <td style="width:15%;">
+                    <b> <a class = "" style = "font-size: 0.9vw" href="{% url 'book-book' art.book_id art.pagina 1 %}">
+                       Читати с.&nbsp;{{ art.pagina }} </a> </b></td>
+        {% else %}
+          <td style="width:15%; font-size:0.9vw">
+                       с.&nbsp;{{ art.pagina }}  </td>
+        {% endif %}
+      </tr>
+    </table>
+    {% endfor %}
+</div>    <!-- elenco list -->
+
+{% endblock %} <!-- content -->
+
+<!-- ====================  SIDE-RICHT  ================================= -->
+<div class="side-right">
+{% block side_right %}
+
+<div class = "image-fon-right">
+         <img class = "" src="{% static right_fon %}" alt="Logo_Kursor_blu"
+              style="width:100%;"/>
+</div> <!-- image-fon-right -->
+
+<div class = "right-image-top" style="">
+                 <img  src="{% static 'img_background/Tytle_Avatar.jpg' %}" alt=""
+                 style="width: ; height: 100%; object-fit: fill; border: 0px solid gray;"/>
+</div> <!-- right-image-top -->
+
+<div class = "right-list">
+
+         <p style = "font-family: Arial; font-size: 1.3vw; transform: scale(1, 1); color: DimGray">
+            <b>{{ right_text }}: {{num_book}} </b></p>
+
+        {% for book in booklist %}
+
+               <p style="text-align: left;">
+                <a class = "link" style=""
+                   href="{% url 'book_detail' book.pk 1 %}"><b>{{ book.pseudonym }}:</b> &nbsp;&nbsp;{{book.num_art}} статей </a></p>
+
+        {% endfor %}
+</div> <!-- right-list -->
+
+<div class = "right-tytle-top">
+       <img class = "" src="{% static 'img_background/KSS_testo.jpg' %}" alt="Культурна спадщина Слобожанщини"
+              style="width:100%; height: 120%"/>
+</div>
+
+
+
+{% endblock %} <!-- site_right -->
+</div>  <!-- side-right -->

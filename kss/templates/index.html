@@ -1,0 +1,164 @@
+<!--TEMPLATE INDEX-->
+
+
+<style>
+
+.list-detail {                           /* mobile */
+        background: none;
+        justify-content: space-between;
+        position: absolute;
+        left:1.5%;       top:1%;
+        width: 98.5%;     height: 98.0%;
+        overflow-y: scroll;
+}
+.list-detail::-webkit-scrollbar  {
+        display: none;
+}
+
+.lenta-horizont {                          /* mobile */
+        display: flex;
+        display: block;
+        background: none;
+        position: relative;
+        left: 0%;        top: 0%;
+        width-max: 1000px;   height: 200px;
+        border: 0px solid red;
+        overflow: auto;
+
+        -webkit-column-width: 50.0%; -moz-column-width: 50.0%; column-width: 50.0%;
+        -webkit-column-count: 1;     -moz-column-count: 1;     column-count: 1;
+        -webkit-column-gap: 0%;      -moz-column-gap: 0%;      column-gap: 0%;
+        -webkit-column-rule: 0px solid #ccc;   -moz-column-rule: 0px solid #ccc;  column-rule: 0px solid #ccc;
+}
+.lenta-horizont::-webkit-scrollbar {
+        width: 6px;    height: 6px;
+    }
+.lenta-horizont::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, rgb(50, 50, 50), rgb(200, 200, 200));
+  border-radius: 5px;
+}
+.count-kss {                           /* mobile */
+        display: none;
+
+    }
+
+/* ================================================================== */
+
+@media (min-width: 400px) {
+
+.list-detail {                             /* computer */
+        display: block;
+        background: none;
+        justify-content: space-between;
+        position: absolute;
+        left:1.5%;       top:10%;
+        width: 98.5%;     height: 89.0%;
+        overflow-y: scroll;
+}
+.list-detail::-webkit-scrollbar  {
+        display: none;
+}
+
+.lenta-horizont {                          /* computer */
+        display: flex;
+        display: inline-block;
+        background: none;
+        position: relative;
+        left: 0%;        top: 0%;
+        width: 100%;   height: 250px;
+        border: 0px solid red;
+        padding-top: 10px;
+        overflow: auto;
+
+<!--        -webkit-column-width: 100.0%; -moz-column-width: 100.0%; column-width: 100.0%;-->
+<!--        -webkit-column-count: 1;     -moz-column-count: 1;     column-count: 1;-->
+<!--        -webkit-column-gap: 0%;      -moz-column-gap: 0%;      column-gap: 0%;-->
+<!--        -webkit-column-rule: 0px solid #ccc;   -moz-column-rule: 0px solid #ccc;  column-rule: 0px solid #ccc;-->
+}
+
+.lenta-horizont::-webkit-scrollbar {
+        width: 6px;    height: 6px;
+    }
+.lenta-horizont::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, rgb(50, 50, 50), rgb(200, 200, 200));
+  border-radius: 5px;
+}
+
+}
+.count-kss {                              /* computer */
+    display: block;
+    background: none;
+    position: absolute;
+    left: -2.0%;     top:30%;
+    width: 40.0%;   height: 30.0%;
+    padding-left: 0%;
+    color: black;
+    font-size: 13px;
+}
+</style>
+
+{% extends "base_generic.html" %}
+
+{% block title %}<title> Культурна спадщина </title>{% endblock %}
+{% load static %}
+
+<!--   =================== SIDE-LEFT ======================  -->
+
+
+
+
+<!--   =================== CONTENT ======================  -->
+<div class="content">
+{% block content %}
+
+  <div class = "image-fon-content">
+         <img class = "" src="{% static 'img_background/Chiesa_Gievka_blue_2.jpg' %}" alt="Logo_Kursor_blu"
+              style="width:100%;"/>
+  </div>
+
+<div class = "tytle-kss" style = "text-align: left;">
+    <p> Культурна спадщина Слобожанщини </p>
+</div>
+
+<div class = "image-kss">
+         <a href="{% url 'index' %}">
+         <img class = "" src="{% static 'img_background/KSS_light_blue.jpg' %}" alt="KSS_Kursor_blu"
+              style="width:98%;"/> </a>
+</div>
+
+<div class = "count-kss">
+  <ul>
+    <li><b> Збірок: {{ num_book }} ({{ num_book_letto }})</b></li>
+    <li><b> Статей: {{ num_article }} ({{ num_art_letto }})</b></li>
+    <li><b> Авторів: {{ num_author }} </b></li>
+    <li><b> Індекси по темам: {{ num_genre }} </b></li>
+    <li><b> Типів книг: {{ num_type }} </b></li>
+
+  </ul>
+
+</div>  <!-- count-kss -->
+
+
+{% endblock %} <!-- content -->
+</div>
+
+<!--   =================== SIDE RICHT ======================  -->
+ <div class="side-right">
+
+     {% block side_right %}
+
+ <div class = "image-fon-right">
+         <img class = "" src="{% static 'img_background/Chiesa_Gievka_blue_3.jpg' %}" alt="Logo_Kursor_blu"
+              style="width:100%;"/>
+ </div>
+
+
+     {% endblock %}
+
+ </div>  <!-- side-right -->
+
+
+
+
+
+

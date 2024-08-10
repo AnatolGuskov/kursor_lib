@@ -1,0 +1,170 @@
+<!--TEMPLATE COLLEZIONE-->
+    <style>
+.colon {                                     /* computer */
+            display: none;
+
+}
+
+@media (min-width: 400px) {
+
+.colon {                                     /* computer */
+     display: flex;
+     display: inline-block;
+     background: none;
+     border: 0px solid red;
+     position: relative;
+     left:8.0%;      top:16%;
+     width: 91.5%;   height: 75.0%;
+     padding-left: 0%;
+     font-size: 11px;
+     margin-bottom: 2px;  margin-top: 0.5px
+     overflow: none;
+     overflow: auto;
+     /* Chrom  Safari  */          /* FireFox  */
+     -webkit-column-width: 25.0%; -moz-column-width: 25.0%; column-width: 25.0%;
+     -webkit-column-count: 4;     -moz-column-count: 4;     column-count: 4;
+     -webkit-column-gap: 0%;      -moz-column-gap: 0%;      column-gap: 0%;
+    }
+
+.colon::-webkit-scrollbar {
+        width: 6px;    height: 6px;
+    }
+.colon::-webkit-scrollbar-thumb {
+  background: linear-gradient(to left, blue, rgb(200, 200, 200));
+  border-radius: 5px;
+}
+
+ }
+
+
+    </style>
+<!--  ======================================================= -->
+
+{% extends "base_generic_mlyn.html" %}
+
+{% block title %}<title>{{ titul }}</title>{% endblock %}
+{% load static %}
+
+<!--  ======================================================= -->
+<div class="content">
+{% block content %}
+
+   <div class = "image-fon-content">
+         <img class = "" src="{% static 'img_background/Mlyn_2.jpg' %}" alt="Logo_Kursor_blu"
+              style="width:100%;"/>
+   </div>
+
+<div class = "image-kss">
+         <img class = "" src="{% static 'img_background/KSS_light_blue.jpg' %}" alt="KSS_Kursor_blu"
+              style="width:98%;"/>
+</div>
+
+<div class = "tytle-kss">
+            <p> {{ genre_text }} {{ num_genre}} </p>
+</div> <!-- title_kss -->
+
+{% if genre == "0" %}
+    <div class="colon">
+           {% for thema in themalist %}
+                <a class = "link" style="font-size: 11px; margin-bottom: 0px;  margin-top: 0px"
+                       href="{% url alfabet 0 thema.id %}"><b>{{ thema.genre }} </b></a></p>
+           {% endfor %}
+    </div>   <!-- colon -->
+    <p> Go >> </p>
+
+{% else %} <!-- genre != 0 -->
+
+<div class = "th-block">
+    <table style="width:100%">
+      <tr style="height:20px">
+        <th style="width:54%"> Назва статті </th>
+        <th style="width:25%"> Автори </th>
+        <th style="width:12%;"> Збірка </th>
+        <th style="width:8%; color: rgba(76, 175, 80, 0)"> Читати </th>
+        <th style="width:1%; color: rgba(76, 175, 80, 0)"> b </th>
+
+      </tr>
+    </table>
+</div>  <!-- th-block -->
+
+<div class="elenco-list">
+
+      {% for art in articlelist %}
+    <table style="width:100%">
+      <tr style="">
+        <td style="width:54%;">
+            <a class = "link" href="{% url 'article_detail' art.id %}">
+                        <b> {{ art.title }} </b> </a> </td>
+
+        {% if art.num_aut == 1 %}
+        <td style="width:26%;">
+            <a class = "link" href="{% url 'author_detail' art.author_id %}">
+                        <b> {{ art.authore }} </b> </a> </td>
+        {% else %}
+        <td style="width:26%;"> {{ art.authore }} </td>
+        {% endif %}
+
+        <td style="width:12%;">
+            <a class = "link" href="{% url 'book_detail' art.id_book 0 %}">
+                <b> {{ art.pseudo }} </b> </a> </td>
+
+        {% if art.content == "1" %}
+        <td style="width: 8%; ">
+            <a class = "" href="{% url 'book-book' art.book_id art.pagina 1 %}">
+                <b> Читати </b> </a> </td>
+        {% else %}
+        <td style="width: 8%; color: rgba(76, 175, 80, 0)"> Читати </td>
+        {% endif %}
+      </tr>
+    </table>
+     {% endfor %}
+    <br><br><br><br><br><br><br><br>
+</div>   <!-- elenco-list -->
+
+{% endif %} <!-- genre != 0 -->
+
+
+
+{% endblock %} <!-- content -->
+</div>   <!-- content -->
+<!-- ====================  SIDE-RICHT  ================================= -->
+<div class="side-right">
+{% block side_right %}
+
+
+<div class = "image-fon-right">
+         <img class = "" src="{% static 'img_background/Mlyn_3.jpg' %}" alt="Logo_Kursor_blu"
+              style="width:100%;"/>
+</div> <!-- image-fon-right -->
+
+<div class = "right-list" style = "top: 10.0%; height: 89%">
+
+    <p style = "font-family: Arial; font-size: 1.3vw; color: DimGray">
+        <b> {{ right_text }}: {{numer}} </b></p>
+
+    <p style = "color: black; font-size: 10">
+      Українські великі літери <b>"&nbsp;Є&nbsp;"</b>, <b>"&nbsp;І&nbsp;"</b> та <b>"&nbsp;Ї&nbsp;"</b>шукайте на початку кириличного алфавітного порядку,
+      а малі літери <b>"&nbsp;є&nbsp;"</b>, <b>"&nbsp;і&nbsp;"</b> та <b>"&nbsp;ї&nbsp;"</b> - у кінці кириличного алфавитного порядку</p>
+      <br>
+
+    {% for lett in letteralist %}
+            <figure style="margin-bottom: 0px;  margin-top: 0px">
+                <p style="display: inline-block; text-align: left;  margin-bottom: 0px;  margin-top: 0px">
+                <a class = "link" style="font-size: 17px;  margin-bottom: 0px;  margin-top: 0px"
+                   href="{% url alfabet lett.0 0 %}"><b>{{ lett.0 }} :</b></a>
+                    <p style="display: inline-block; font-size: 12;"> &nbsp;&nbsp;{{lett.1}} </p>  </p>
+            </figure>
+    {% endfor %}
+</div> <!-- right-list -->
+
+<div class = "right-tytle-top">
+       <img class = "" src="{% static 'img_background/KSS_testo.jpg' %}" alt="Культурна спадщина Слобожанщини"
+              style="width:100%; height: 120%"/>
+</div>
+
+
+
+
+{% endblock %} <!-- site_right -->
+</div>  <!-- side-right -->
+

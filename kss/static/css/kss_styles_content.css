@@ -1,0 +1,365 @@
+body {
+    background: black; /* Цвет фона веб-страницы */
+}
+
+.maxwidth {
+    position: absolute;
+    background: rgb(100, 100, 100);
+    border: 0px solid rgb(100, 100, 100);
+    left: 0%;    top: 0px;
+    width: 100%; height: 100%;
+    padding-top: 0%;
+    margin: 0%;
+}
+
+/* =============== HOME ====================== */
+
+.novita-mobile {                                     /* mobile */
+            display: flex;
+            display: block;
+            background: black;
+            border: 0px solid white;
+            position: absolute;
+            left:0.0%;       top:21%;
+            width: 100.0%;   height: 79.0%;
+            padding-left: 2%;
+            overflow: scroll;
+            /* Chrom  Safari  */          /* FireFox  */
+        -webkit-column-width: 50.0%; -moz-column-width: 50.0%; column-width: 50.0%;
+        -webkit-column-count: 2;     -moz-column-count: 2;     column-count: 2;
+        -webkit-column-gap: 0%;      -moz-column-gap: 0%;      column-gap: 0%;
+        -webkit-column-rule: 0px solid #ccc;   -moz-column-rule: 0px solid #ccc;  column-rule: 0px solid #ccc;
+    }
+.novita {                                           /* mobile */
+            display: none;
+    }
+
+.novita-tytle {                                     /* mobile */
+            display: block;
+            background: black;
+            position: absolute;
+            left:0.0%;       top:1%;
+            width: 100.0%;   height: 18.0%;
+            padding-left: 2%;
+
+    }
+.tytle-kss {                           /* mobile */
+        display: none;
+        background: none;
+        position: absolute;
+        left: 0%;        top: 0%;
+        width: 0.0%;   height: 0.0%;
+        padding-left: 0;
+        font-family: "Ruslan Display", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        color: white;
+    }
+.image-kss {                           /* mobile */
+        display: none;
+        background: none;
+        position: absolute;
+        left: 0%;        top: 0%;
+        width: 0.0%;   height: 0.0%;
+        padding-left: 0;
+        font-family: "Ruslan Display", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        color: white;
+    }
+
+.tytle-page {                           /* mobile */
+        background: none;
+        position: absolute;
+        left: 3%;        top: 1%;
+        width: 93.0%;   height: 8.0%;
+        padding-left: 0;
+        font-family: Anton;
+        font-size: 20px;
+        color: white;
+}
+
+.collezione-list{
+        display: flex;    display: block;
+        flex-wrap: wrap;
+        background: none;
+        position: absolute;
+        left:0px;       top:10%;
+        width: 100%;   height: 89%;
+        border: 0px solid red;
+        padding-left: 0px;
+        color: rgb(0, 100, 254);
+        text-align: center;
+        overflow-y: scroll;
+ }
+.collezione-list::-webkit-scrollbar {        /* mobile */
+        width: 5px;    height: 5px;
+}
+.collezione-list::-webkit-scrollbar-thumb {
+        background: linear-gradient(to bottom, rgb(50, 50, 50), rgb(200, 200, 200));
+        border-radius: 5px;
+}
+/* =============== RIGHTSIDE ====================== */
+
+ .right-image-top {                          /* mobile */
+        display: none;
+        border: 0px solid white;
+        background: black;
+        position: absolute;
+        left:0.0%;      top:0.0%;
+        width: 90.0%;   height: 0.0%;
+        padding-left: 0px;
+    }
+ h3 {
+        position: absolute;
+        top: -15px;    left: 0.0%;
+        width: 100%;
+        font-family: Anton;
+        font-size: 17px;
+        color: white;
+        text-align: center;
+        -webkit-text-stroke: 0.5px black;
+    }
+ .right-nome-top {                           /* mobile */
+        display: block;
+        background: black;
+        position: absolute;
+        left: 0%;       top: 0%;
+        width: 100.0%;  height: 19.0%;
+        padding-top: 2px; padding-left: 7px;
+        font-family: Anton;
+        font-size: 12px;
+        color: licht blue;
+        border: 0px solid red;
+    }
+ .right-text {                          /* computer */
+    display: none;
+
+}
+ .right-list {                             /* mobile */
+        display: none;
+        background: black;
+        position: absolute;
+        left: 0%;      top: 0.0%;
+        width: 100%;   height: 71%;
+        font-family: Arial;
+        font-size: 12px;
+        line-height: 1.0;
+        margin-top: 5.0px; margin-bottom: 0.0;
+        color: white;
+        text-align: center;
+        overflow-y: scroll;
+    }
+ .right-list::-webkit-scrollbar {        /* mobile */
+        display: none;
+    }
+ .text-elenco {                            /* mobile */
+        display: none;
+    }
+
+
+<!--   =================  End MEDIA Mobile ======================  -->
+
+<!--   =================== MEDIA COMPUTER ======================  -->
+
+body {  }
+
+@media (min-width: 400px) {
+
+.maxwidth {                                  /* computer */
+    position: absolute;
+    background: gray;
+    border: 0px solid rgb(50, 50, 50);
+    left:0px;    top:0.5%;
+    height: auto;
+    width: 100%; max-width: 1500px;
+    padding-top: 50%;
+    margin: 0;
+}
+.tytle-page {                               /* computer */
+    background: none;
+    position: absolute;
+    left: 3%;       top: 1%;
+    width: 93.0%;   height: 10.0%;
+    border: opx solid red;
+    padding-left: 0;
+    font-family: "Ruslan Display", sans-serif;
+    font-weight: 400;      font-style: normal;
+    font-size: 1.5vw;
+    color: black;
+}
+
+.tytle-kss {                           /* computer */
+    display: block;        background: none;
+    border: 0px solid red;
+    position: absolute;
+    left: 8%;       top: 1.0%;
+    width: 90.0%;   height: 4.0%;
+    padding-left: 0;
+    font-family: "Ruslan Display", sans-serif;
+    font-size: 2.2vw; font-weight: 400;
+    font-style: normal;
+    transform: scale(1, 2);
+    color: black;
+    }
+
+ .text-elenco {                            /* computer */
+    display: block;
+    position: absolute;
+    border: 1px solid green;
+    left: 60%;      top:2.0%;
+    width: 38.0%;   height: 3.5%;
+    text-align: right;
+    font-size: 1.0vw;  color: blue;
+    overflow: none;
+}
+
+.image-kss {                               /* computer */
+    display: block;
+    background: none;
+    border: opx solid red;
+    position: absolute;
+    left: 0.5%;        top: 0%;
+    width: 6.5%;   height: 16.0%;
+    padding-left: 0;
+    margin-bottom: 0px;  margin-top: 0px;
+}
+
+.right-tytle-top {                           /* computer */
+    display: block;
+    background: none;
+    position: absolute;
+    border: 0px solid white;
+    left: 3.0%;       top: 2.5%;
+    width: 92.0%;   height: 2.0%;
+    color: blue;
+    text-align: left; padding-left: 10px;
+    font-family: Ruslan Display, sans-serif;
+    font-size: 0.8vw; transform: scale(1, 2.0);
+    margin-bottom: 0px;  margin-top: 0px;
+
+}
+
+.right-image-top {                          /* computer */
+    display: block;
+    border: 0px solid white;
+    background: none;
+    position: absolute;
+    left:3.0%;     top:9.0%;
+    width: 94.0%;  height: 27.0%;
+    padding-left: 0px;
+    text-align: center;
+}
+
+.right-text {                          /* computer */
+    display: block;
+    background: none;
+    border: 0px solid red;
+    font-family: Arial;
+    font-family: Arial; font-size: 1.2vw;
+    color: DimGray;
+    text-align: left;
+    padding-right: 10px;
+
+}
+.right-list {                          /* computer */
+    display: block;
+    background: none;
+    position: absolute;
+    border: 0px solid white;
+    left: 3%;     top: 36.0%;
+    width: 94%;   height: 63%;
+    font-family: Arial;
+    font-size: 1.0vw;   line-height: 1.1;
+    margin-top: 5.0px; margin-bottom: 0.0;
+    color: black;
+    text-align: left; padding-left: 10px;
+    overflow-y: scroll;
+}
+.right-list::-webkit-scrollbar {        /* computer */
+    width: 5px;    height: 5px;
+}
+.right-list::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, rgb(50, 50, 50), rgb(200, 200, 200));
+    border-radius: 5px;
+}
+.tytle-home {                                /* computer */
+    font-family: Anton;
+    font-size: 30px;
+    color: rgb(150, 150, 150);
+}
+.novita-mobile {                             /* computer */
+    display: none;
+}
+.novita {                                     /* computer */
+    display: block;
+    background: black;
+    position: absolute;
+    left:0.0%;       top:15%;
+    width: 96.0%;    height: 84.0%;
+    padding-left: 0px;
+    text-align: center;
+    overflow-y: scroll;
+}
+.novita::-webkit-scrollbar {        /* computer */
+    display: none;
+}
+
+
+}
+<!--   =================== END of MEDIA COMPUTER ======================  -->
+
+<!--   =================== SLIDE SHOW ======================  -->
+* {box-sizing:border-box}
+body {font-family: Verdana, sans-serif;}
+img {vertical-align: middle;}
+
+.slideshow-container {
+  width: 100%; height: auto;
+  position: absolut;
+  margin: auto;
+  padding-top: 0%;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Slide text */
+.text {
+  color: #f2f2f2;
+  font-size: 11px;
+  padding: 8px 12px;
+  position: relative;
+  bottom: 24%;
+  width: 100%;
+  text-align: center;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 8px;  width:  8px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: rgb(80, 80, 80);
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 3s;
+}
+
+@keyframes fade {
+  from {opacity: 0.3}
+  to   {opacity: 1.0}
+}
+<!--   =================== SLIDE SHOW END ======================  -->
